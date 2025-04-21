@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBC PAY.com - Secure Payments in Ghana and Nigeria</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .rate-banner {
+            background-color: var(--success);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            border-radius: 8px;
+            margin: 1rem 0;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .auth-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .auth-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 48%;
+        }
+
+        .auth-form h2 {
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+
+        input:focus {
+            border-color: var(--secondary);
+            outline: none;
+        }
+
+        button {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background 0.3s;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+            width: 48%;
+        }
+
+        .nav-link {
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            padding: 1rem;
+            border-radius: 4px;
+            text-align: center;
+            flex: 1;
+            transition: background 0.3s;
+            font-weight: 600;
+        }
+
+        .nav-link:hover {
+            background-color: #1a252f;
+        }
+
+        .section {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--secondary);
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .faq-item strong {
+            color: var(--dark);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .step-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            position: relative;
+            padding-top: 3rem;
+        }
+
+        .step-number {
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            background-color: var(--accent);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .auth-section {
+                flex-direction: column;
+            }
+
+            .auth-form, .nav-links {
+                width: 100%;
+            }
+
+            .nav-links {
+                margin-top: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>NBC PAY.COM</h1>
+        <p>Most Secure and Reliable Way to Pay Suppliers in Ghana and Nigeria</p>
+    </header>
+
+    <div class="container">
+        <div class="rate-banner">
+            Current Exchange Rate: <strong>₦1 = ¢0.44</strong>
+        </div>
+
+        <div class="auth-section">
+            <div class="auth-form">
+                <h2>Login to Your Account</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+
+            <div class="nav-links">
+                <a href="#" class="nav-link">BUY CEDIS</a>
+                <a href="#" class="nav-link">BUY NAIRA</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <p><strong>How do I know NBC PAY.com is not a scam?</strong></p>
+                <p>NBC PAY.com is reliable and trusted by many. We offer in-person meetings for verification. Contact us at Q4 4253 SQ 381 700 to arrange a meeting at your preferred location.</p>
+            </div>
+            <div class="faq-item">
+                <p><strong>How fast are transfers to Nigeria and Ghana?</strong></p>
+                <p>Transfers are completed within 5 to 30 minutes.</p>
+            </div>
+            <div class="faq-item">
+                <p><strong>Do you transfer to bank accounts & MTN Mobile Money?</strong></p>
+                <p>Yes, we support both bank transfers and MTN Mobile Money payments.</p>
+            </div>
+            <div class="faq-item">
+                <p><strong>Do you transfer to Nigerian banks?</strong></p>
+                <p>Yes, we transfer to all major Nigerian bank accounts.</p>
+            </div>
+            <div class="faq-item">
+                <p><strong>What are your transfer limits?</strong></p>
+                <p>No strict limits - contact us directly for large transfers.</p>
+            </div>
+            <div class="faq-item">
+                <p><strong>Can I negotiate the exchange rate?</strong></p>
+                <p>Our standard rate is 0.44, but we may offer better rates for large transactions.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Our Special Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Reliable Service</h3>
+                    <p>Trusted by thousands with a proven track record of secure transactions across Africa.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Competitive Rates</h3>
+                    <p>We offer the most competitive exchange rates with full transparency on fees.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Bank-Level Security</h3>
+                    <p>Your transactions and personal data are protected with enterprise-grade security.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Lightning Fast</h3>
+                    <p>Complete most transfers in under 30 minutes - the fastest way to move money in Africa.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>How It Works</h2>
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Select Transaction</h3>
+                    <p>Choose to buy or sell cedis/naira through our secure platform.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Enter Details</h3>
+                    <p>Provide your transfer details and recipient information.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Confirm & Pay</h3>
+                    <p>Review the transaction details and complete your payment.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3>Receive Funds</h3>
+                    <p>Your recipient gets funds within 30 minutes with confirmation receipt.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Copyright &copy; 2025 NBC PAY.com - All Rights Reserved</p>
+    </footer>
+
+    <script>
+        // Sample JavaScript functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Current rate ticker simulation
+            const rateElement = document.querySelector('.rate-banner strong');
+            
+            function simulateRateChange() {
+                const baseRate = 0.44;
+                const fluctuation = (Math.random() * 0.02) - 0.01; // +/- 0.01
+                const newRate = (baseRate + fluctuation).toFixed(4);
+                rateElement.textContent = `₦1 = ¢${newRate}`;
+            }
+            
+            // Update rate every 30 seconds
+            setInterval(simulateRateChange, 30000);
+            
+            // Form validation could be added here
+            const loginForm = document.querySelector('form');
+            if (loginForm) {
+                loginForm.addEventListener('submit', function(e) {
+                    // Add validation logic here
+                    console.log('Form submitted');
+                    // e.preventDefault(); // Uncomment to prevent actual submission
+                });
+            }
+        });
+    </script>
+</body>
+</html>
